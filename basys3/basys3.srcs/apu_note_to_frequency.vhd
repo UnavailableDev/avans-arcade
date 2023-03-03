@@ -35,6 +35,6 @@ begin
         x"100" when data(6 downto 3) = (x"C") else -- B     256
         x"000";
 
-    freq <= std_logic_vector(shift_right(unsigned(buff), shift)); -- TODO: MAYBE WORKY???
+    freq <= std_logic_vector(shift_right(unsigned(buff), shift));
 
 end architecture;
