@@ -11,6 +11,7 @@
 #include "engine/draw_screen.h"
 #include "engine/player_controller.h"
 #include "engine/sprite_controller.h"
+#include "engine/title_screen.h"
 
 
 
@@ -47,8 +48,11 @@ typedef struct {
 hh_entity hh_g_player, hh_g_player_new;
 void hh_demo_setup() {
 
+	hh_clear_screen();
 	hh_setup_palettes();
-	hh_setup_screen();
+	hh_init_title_screen();
+	// hh_setup_screen();
+
 
 }
 
@@ -56,7 +60,7 @@ void hh_demo_loop(unsigned long frame) {
 
 	// hh_player_movement();
 
-	hh_player_actions();
+	// hh_player_actions();
 
 }
 

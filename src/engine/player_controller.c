@@ -43,8 +43,10 @@ void hh_player_actions() {
 	// 	player.vel.x += maa;
 	// 	// g_hh_demo_balls[0].horizontal_flip = true;
 	// }
-	// if (g_hh_controller_p1.button_primary /*&& player.is_grounded*/) //JUMP
-	// 	player.vel.y += -6;
+	if (g_hh_controller_p1.button_primary /*&& player.is_grounded*/){ //JUMP
+		hh_clear_screen();
+		// player.vel.y += -6;
+	}
 	// // // if (g_hh_controller_p1.button_secondary)
 
 	// player.vel.y += 1; //gravity
@@ -97,38 +99,38 @@ void hh_player_actions() {
 	// 	}
 	// }
 
-	player_new.is_grounded = false;
+	// player_new.is_grounded = false;
 
-	// solves x collision
-	if (player.vel.x <= 0) {
-		if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player.pos.y + 0})) || 
-			hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player.pos.y + 15}))) {
-			player_new.pos.x = (player_new.pos.x & ~15) + 16,
-			player_new.vel.x = 0;
-		}
-	} else {
-		if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player.pos.y + 0})) || 
-			hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player.pos.y + 15}))) {
-			player_new.pos.x = player_new.pos.x & ~15, // <-- magic comma, NOT TOUCHY
-			player_new.vel.x = 0;
-		}
-	}
+	// // solves x collision
+	// if (player.vel.x <= 0) {
+	// 	if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player.pos.y + 0})) || 
+	// 		hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player.pos.y + 15}))) {
+	// 		player_new.pos.x = (player_new.pos.x & ~15) + 16,
+	// 		player_new.vel.x = 0;
+	// 	}
+	// } else {
+	// 	if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player.pos.y + 0})) || 
+	// 		hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player.pos.y + 15}))) {
+	// 		player_new.pos.x = player_new.pos.x & ~15, // <-- magic comma, NOT TOUCHY
+	// 		player_new.vel.x = 0;
+	// 	}
+	// }
 
-	//solves y collision
-	if (player.vel.y <= 0) {
-		if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 0})) || 
-			hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 15}))) {
-			player_new.pos.y = (player_new.pos.y & ~15) + 16,
-			player_new.vel.y = 0;
-		}
-	} else {
-		if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 16})) || 
-			hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player_new.pos.y + 15}))) {
-			player_new.pos.y = player_new.pos.y & ~15,
-			player_new.vel.y = 0;
-			player_new.is_grounded = true;
-		}
-	}
+	// //solves y collision
+	// if (player.vel.y <= 0) {
+	// 	if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 0})) || 
+	// 		hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 15}))) {
+	// 		player_new.pos.y = (player_new.pos.y & ~15) + 16,
+	// 		player_new.vel.y = 0;
+	// 	}
+	// } else {
+	// 	if (hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 0, .y=player_new.pos.y + 16})) || 
+	// 		hh_colidable(hh_world_to_tile((vec2){.x=player_new.pos.x + 16, .y=player_new.pos.y + 15}))) {
+	// 		player_new.pos.y = player_new.pos.y & ~15,
+	// 		player_new.vel.y = 0;
+	// 		player_new.is_grounded = true;
+	// 	}
+	// }
 
 	player = player_new;
 
